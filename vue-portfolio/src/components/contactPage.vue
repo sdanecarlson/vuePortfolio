@@ -4,44 +4,33 @@
             <div class="container-fliud">
                 <h1>CONTACT</h1>
                 <p>Learn more about Dane.</p>
-                  <form class="contact-form" @submit.prevent="sendEmail">
-                    <label>Name </label>
-                    <input type="text" name="user_name">
-                    <label>Email </label>
-                    <input type="email" name="user_email"><br>
-                    <label>Message </label>
-                    <textarea name="message" style="padding-top: 150px; width: 450px"></textarea>
-                    <br><input type="submit" value="Send">
-                </form>
+                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target=".bd-example-modal-lg">Contact</button>
+            </div>
+        </section>
+        <section class="modal">
+            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <Contact/>
+                    </div>
+                </div>
             </div>
         </section>
     </div>
 </template>
 
 <script>
-import emailjs from 'emailjs-com';
-
+import Contact from'./contactUs'
 export default {
-  methods: {
-    sendEmail: (e) => {
-      emailjs.sendForm('service_jgq5vmr', 'template_ol59ays', e.target, 'user_lNqsFNOGgahwP87OMuKwt')
-        .then((result) => {
-            console.log('SUCCESS!', result.status, result.text);
-        }, (error) => {
-            console.log('FAILED...', error);
-        });
-    }
-  }
+    name:'contactPage',
+    components:{
+        Contact
+    }  
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.contact-form label{
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
 .headerImage{
   width: 100%;
 }
